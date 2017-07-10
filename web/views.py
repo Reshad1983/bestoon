@@ -24,7 +24,9 @@ def get_client_ip(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
-
+def index(request):
+    context = {}
+    return render(request, 'index.html', context)
 
 def grecaptcha_verify(request):
     data = request.POST
