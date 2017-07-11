@@ -68,7 +68,7 @@ def register(request):
                                  sender = "r.ahmadi1983@reshadahmadi.info",
                                  #to = email,
                                  to = "reah@hms.se",
-                                 text_body = " برای فعال کردن اکانت بستون خود روی لینک روبرو کلیک کنید: http://localhost:8009/accounts/register/?email={}&code={}".format(email, code),
+                                 text_body = " برای فعال کردن اکانت بستون خود روی لینک روبرو کلیک کنید: 7{}?email={}&code={}".format(request.build_absolute_uri('accounts/register'),email, code),
                                  tag = "account request")
                 message.send()
                 context = {'message': 'ایمیلی حاوی لینک فعال سازی اکانت به شما فرستاده شده، لطفا پس از چک کردن ایمیل، روی لینک کلیک کنید.'}
