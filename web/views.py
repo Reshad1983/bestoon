@@ -8,6 +8,7 @@ from datetime import datetime
 from django.conf import settings
 from django.contrib.auth.hashers import make_password
 from django.shortcuts import render
+from django.db.models import Sum, Count
 #import postmark.PMMail
 #from postmark import PMMail
 import requests
@@ -15,8 +16,16 @@ from postmark import *
 import random, string, time
 random_str = lambda N: ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(N))
 
-
-
+@csrf_exempt
+def generalstat(request):
+    this_token  = request.POST['token']
+    this_user = User.objects.filter(token__token =this_token).get()
+    income = Income.objects.filter(user=this_user).aggregate(Count('amount'), Sum('amount'))
+    expense = Expense.objects.filter(user=this_user).aggregate(Count('amount'), Sum('amount'))
+    context = {}
+    context['income'] = income
+    context['expense'] = expense
+    return JsonResponse(context, encoder=JSONEncoder)
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:

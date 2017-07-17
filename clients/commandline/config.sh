@@ -1,0 +1,3 @@
+#!/bin/bash
+TOKEN=tyKmgAx1YhEqJ5oDoFf1wmA6WEqHpgSsDZZTKUsFHlTV0x4J
+BASE_URL="http://46.101.176.17"

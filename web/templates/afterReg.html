@@ -1,0 +1,41 @@
+
+
+{% extends "template.html"%}
+{% load staticfiles %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-12">
+      {% if form.errors %}
+      <p>
+          نام کاربری یا پسورد شما درست نبود.
+      </p>
+      {% endif %}
+      {% if next %}
+      {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+          please login with an account that has access.
+      </p>
+      {% else %}
+      <p>
+          برای دیدن این صفحه باید لاگین کنید
+      </p>
+      {% endif %}
+      {% endif %}
+      <p>
+          این فعلا یک سیستم شخصی است که جادی برای استفاده خودش نوشته. نه خیلی محکم است و نه برای استفاده عمومی. در نتیجه لطفا برای هک و غیره تلاش نکنین (:
+      </p>
+      <p>
+          ایده کلی اینه که سیستمی داشته باشیم که بشه توش فهرست کارها رو منیج کرد و اگر خواستیم به شکل عمومی به اشتراک بذاریم. با ایده یک کد سریع نیم ساعته برای عمومی کردن
+          کارهای در دست انجام نوروز ۹۵ نوشته شد ولی شاید بیشتر از اینها توسعه پیدا کنه.
+      </p>
+      <p>
+          خوش باشین و خندون و همیشه از برنامه نوشتن و مهمتر از اون، به انجام رسوندن کارها لذت ببرین. هیچ لذتی بالاتر از تیک زدن کارها نیست!
+      </p>
+      {% if message %}
+      <div class="bs-callout bs-callout-info">
+          <h5>{{ message }}</h5>
+      </div>
+      {% endif %}
+  </div>
+{% endblock %}
+</div>
