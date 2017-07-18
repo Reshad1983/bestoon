@@ -1,0 +1,3 @@
+#!/bin/bash
+TOKEN=fLlY46kT5scz5QduBZ3WihEIwJIhrYffsuz9pPVaM0Sc5joU
+BASE_URL="192.168.1.45"
